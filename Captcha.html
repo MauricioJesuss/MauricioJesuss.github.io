@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Captcha de Plantas</title>
+    <style>
+        #topButton {
+            display: none;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        #captchaButton {
+            position: fixed;
+            bottom: 50px;
+            right: 110px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        #captchaModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background-color: white;
+            border: 2px solid #333;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+        #captchaModal h2 {
+            font-size: 18px;
+            text-align: center;
+        }
+        .captcha-image {
+            width: 70px;
+            height: 70px;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            display: inline-block;
+        }
+        .selected {
+            border: 2px solid blue;
+        }
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón "Volver arriba" -->
+    <button id="topButton" title="Volver arriba">&#x25B2;</button>
+
+    <!-- Botón de Captcha -->
+    <button id="captchaButton" title="Abrir captcha">Captcha</button>
+
+    <!-- Modal de Captcha -->
+    <div id="overlay"></div>
+    <div id="captchaModal">
+        <h2>Escoge las plantas en peligro en Tuxtla</h2>
+        <div id="captchaImages"></div>
+        <button id="verifyButton">Verificar</button>
+    </div>
+
+    <script>
+        // Mostrar el botón de "volver arriba" cuando se hace scroll
+        window.onscroll = function() {
+            const button = document.getElementById("topButton");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = "block";
+            } else {
+                button.style.display = "none";
+            }
+        };
+
+        // Función para "volver arriba"
+        document.getElementById("topButton").onclick = function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+
+        // Listas de imágenes
+        const correctPlants = [
+            "plant1.jpg", // Reemplaza con los nombres de archivo o rutas correctas
+            "plant2.jpg",
+            "plant3.jpg"
+        ];
+
+        const incorrectPlants = [
+            "notplant1.jpg", // Reemplaza con los nombres de archivo o rutas incorrectas
+            "notplant2.jpg",
+            "notplant3.jpg",
+            "notplant4.jpg",
+            "notplant5.jpg",
+            "notplant6.jpg"
+        ];
+
+        // Combinar imágenes para el captcha
+        const allImages = [...correctPlants, ...incorrectPlants];
+
+        // Mostrar el modal de captcha
+        document.getElementById("captchaButton").onclick = function() {
+            const overlay = document.getElementById("overlay");
+            const modal = document.getElementById("captchaModal");
+            overlay.style.display = "block";
+            modal.style.display = "block";
+            generateCaptcha();
+        };
+
+        // Cerrar el modal de captcha
+        function closeModal() {
+            const overlay = document.getElementById("overlay");
+            const modal = document.getElementById("captchaModal");
+            overlay.style.display = "none";
+            modal.style.display = "none";
+        }
+
+        // Generar captcha aleatorio
+        function generateCaptcha() {
+            const captchaImagesContainer = document.getElementById("captchaImages");
+            captchaImagesContainer.innerHTML = "";
+
+            // Mezclar y seleccionar 9 imágenes al azar
+            const shuffledImages = [...allImages].sort(() => Math.random() - 0.5).slice(0, 9);
+
+            shuffledImages.forEach((src) => {
+                const img = document.createElement("img");
+                img.src = src;
+                img.classList.add("captcha-image");
+                img.onclick = function() {
+                    img.classList.toggle("selected");
+                };
+                captchaImagesContainer.appendChild(img);
+            });
+        }
+
+        // Verificar selección del captcha
+        document.getElementById("verifyButton").onclick = function() {
+            const selectedImages = document.querySelectorAll(".captcha-image.selected");
+            const selectedSrcs = Array.from(selectedImages).map(img => img.src);
+
+            const correctSelection = correctPlants.every(src => selectedSrcs.includes(src));
+            const incorrectSelection = selectedSrcs.some(src => !correctPlants.includes(src));
+
+            if (correctSelection && !incorrectSelection) {
+                alert("¡Felicidades, has seleccionado correctamente!");
+                closeModal();
+            } else {
+                alert("Inténtalo de nuevo.");
+                generateCaptcha();
+            }
+        };
+
+        // Cerrar el modal al hacer clic en el overlay
+        document.getElementById("overlay").onclick = closeModal;
+    </script>
+</body>
+</html>

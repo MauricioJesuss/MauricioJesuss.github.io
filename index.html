@@ -24,7 +24,7 @@
 
   <main>
     <div id="plantas-endemicas">
-      <h2>Plantas Endémicas en peligro</h2>
+      <h2>TOP 5 Plantas Endémicas en peligro</h2>
       <div class="carrusel">
           <button class="btn-prev">⟨</button>
           <div class="plantas-container">
@@ -320,6 +320,14 @@
     </div>
 </div>
 
+<div class="como-ayudar">
+    <h3>Te invitamos a ver los siguientes dos videos de las plantas enedemicas que tenemos en mexico y las que se encuentran en peligro:</h3> <br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ehZrpdGwg5A?si=N4hAWetRDrnNT9dU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="como-ayudar">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/0Yil2bXOqcE?si=sBVGOxpnZkk_1Dx2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 
 <style>
 .question-section {
@@ -415,12 +423,12 @@ button:hover {
     <h1>Preguntas de Seguridad sobre Plantas Endémicas</h1>
     <div class="question-container" id="question-container">
         <div class="question" data-index="0">
-            <h3>1. ¿Cuál de las siguientes plantas es endémica de Chiapas?</h3>
+            <h3>1. ¿Qué planta es conocida como "orquídea cisne" por la curva de su flor?</h3>
             <select class="security-question">
                 <option value="">Selecciona una opción</option>
-                <option value="correcta">Nanche</option>
-                <option value="incorrecta">Guanábana</option>
-                <option value="incorrecta">Mango</option>
+                <option value="correcta">Cycnoches ventricosum</option>
+                <option value="incorrecta">Guayacan</option>
+                <option value="incorrecta">Tempisque</option>
             </select>
             <button onclick="verifyAnswer(0)">Verificar</button>
         </div>
@@ -437,23 +445,23 @@ button:hover {
         </div>
 
         <div class="question" data-index="2">
-            <h3>3. ¿Qué planta es famosa por su fruto comestible en Chiapas?</h3>
+            <h3>3. Es un beneficio que les garantizan su supervivencia en climas y suelos a menudo hostiles</h3>
             <select class="security-question">
                 <option value="">Selecciona una opción</option>
-                <option value="incorrecta">Mango</option>
-                <option value="correcta">Anona</option>
-                <option value="incorrecta">Guayaba</option>
+                <option value="incorrecta">Conservación de Ecosistemas</option>
+                <option value="correcta">Adaptacion al Entorno</option>
+                <option value="incorrecta">Control de erosion</option>
             </select>
             <button onclick="verifyAnswer(2)">Verificar</button>
         </div>
 
         <div class="question" data-index="3">
-            <h3>4. ¿Cuál de estas plantas se utiliza en la gastronomía local?</h3>
+            <h3>4. ¿Cuál planta También se le conoce como "árbol de la flor de mono"?</h3>
             <select class="security-question">
                 <option value="">Selecciona una opción</option>
-                <option value="correcta">Nanche</option>
+                <option value="correcta">Árbol de las Manitas</option>
                 <option value="incorrecta">Mamey</option>
-                <option value="incorrecta">Cilantro</option>
+                <option value="incorrecta">Tempisque</option>
             </select>
             <button onclick="verifyAnswer(3)">Verificar</button>
         </div>
@@ -484,24 +492,24 @@ button:hover {
 <script>
 const plantInfoMessages = [
     {
-        message: "El Nanche (Byrsonima crassifolia) es conocido por sus frutos comestibles y su uso en la medicina tradicional.",
-        image: "img/nanche.jpg" // Asegúrate de que la ruta de la imagen sea correcta
+        message: "La Cycnoches ventricosum, conocida como ''orquídea cisne'' por la curva de su flor, es una especie epífita que crece en los árboles. Sus flores son grandes, de colores variados como amarillo y verde, y pueden medir entre 30 y 60 cm de altura.",
+        image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9u7T0cmJH_NOwFGaHGHIataqlE0oURnC8OrUbLDfc6zJaaWmH9UhdvoJJPaL1ZD29GRgv8EqFGd-yKzJvrJBspvaoh5eewua4lLNIKW3xZnmZjRby2vNKNEIQSudwAwWol-Zv4jBgFkbm/s1600/Cycnoches+ventricosum.jpg" // Asegúrate de que la ruta de la imagen sea correcta
     },
     {
         message: "La Salvia chiapensis es una planta endémica famosa por sus propiedades medicinales.",
         image: "img/salvia_chiapensis.jpg" // Asegúrate de que la ruta de la imagen sea correcta
     },
     {
-        message: "La Anona (Annona squamosa) es apreciada por su sabor dulce y se consume comúnmente en la región.",
-        image: "img/anona.jpg" // Asegúrate de que la ruta de la imagen sea correcta
+        message: "Las plantas endémicas han desarrollado adaptaciones específicas que les permiten prosperar en las condiciones únicas de su entorno local",
+        image: "https://img.freepik.com/fotos-premium/vegetacion-prospera-supera-suelo-arido-entorno-desertico-duro-concepto-estrategias-adaptacion-ecosistema-desertico-sobrevivencia-plantas-suelo-arido-resiliencia-vegetacion-desiertos_918839-39985.jpg" // Asegúrate de que la ruta de la imagen sea correcta
     },
     {
-        message: "El Nanche se utiliza en la gastronomía local para preparar postres y bebidas.",
-        image: "img/nanche.jpg" // Asegúrate de que la ruta de la imagen sea correcta
+        message: "El Chiranthodendron pentadactylon, conocido como ''árbol de las manitas'', es un árbol de hoja perenne que puede alcanzar hasta 25 metros de altura. Sus hojas son grandes y lobuladas, de un color verde oscuro. Sus flores rojas, que asemejan una mano con cinco ''dedos'', son su característica distintiva.",
+        image: "https://noticias.ufm.edu/wp-content/uploads/2022/01/220118-canak-ufm.jpeg" // Asegúrate de que la ruta de la imagen sea correcta
     },
     {
         message: "La Orquídea es una planta en peligro de extinción en Chiapas y necesita conservación.",
-        image: "img/orquidea.jpg" // Asegúrate de que la ruta de la imagen sea correcta
+        image: "https://media.admagazine.com/photos/618a62c2532cae908aaf2b8e/master/w_1600%2Cc_limit/82876.jpg" // Asegúrate de que la ruta de la imagen sea correcta
     }
 ];
 
@@ -528,7 +536,7 @@ function closeModal() {
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Información sobre la planta</h2>
+        <h2>Correcto</h2>
         <p id="plant-info"></p>
         <button onclick="closeModal()">Cerrar ventana</button>
     </div>
